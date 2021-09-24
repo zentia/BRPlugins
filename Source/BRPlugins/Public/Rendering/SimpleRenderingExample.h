@@ -3,8 +3,8 @@
 
 //BlueprintLibraryHeader
 #include "CoreMinimal.h"
-#include "UObject/ObjectMacros.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Math/Vector4.h"
 #include "SimpleRenderingExample.generated.h"
 
 class FRHICommandListImmediate;
@@ -52,10 +52,10 @@ class USimpleRenderingExampleBlueprintLibrary : public UBlueprintFunctionLibrary
 namespace SimpleRenderingExample
 {
 	BEGIN_GLOBAL_SHADER_PARAMETER_STRUCT(FSimpleUniformStructParameters, )
-		SHADER_PARAMETER(FVector4, Color1)
-		SHADER_PARAMETER(FVector4, Color2)
-		SHADER_PARAMETER(FVector4, Color3)
-		SHADER_PARAMETER(FVector4, Color4)
+		SHADER_PARAMETER(FVector4f, Color1)
+		SHADER_PARAMETER(FVector4f, Color2)
+		SHADER_PARAMETER(FVector4f, Color3)
+		SHADER_PARAMETER(FVector4f, Color4)
 		SHADER_PARAMETER(uint32, ColorIndex)
 	END_GLOBAL_SHADER_PARAMETER_STRUCT()
 
@@ -64,7 +64,7 @@ namespace SimpleRenderingExample
 	 */
 	struct FTextureVertex
 	{
-		FVector4 Position;
+		FVector4f Position;
 		FVector2D UV;
 	};
 
@@ -97,7 +97,7 @@ namespace SimpleRenderingExample
 			Vertices[5].UV = FVector2D(1, -1);
 
 			// Create vertex buffer. Fill buffer with initial data upon creation
-			FRHIResourceCreateInfo CreateInfo(&Vertices);
+			FRHIResourceCreateInfo CreateInfo(TEXT("SimpleRenderingExample"),&Vertices);
 			VertexBufferRHI = RHICreateVertexBuffer(Vertices.GetResourceDataSize(), BUF_Static, CreateInfo);
 		}
 	};
@@ -117,7 +117,7 @@ namespace SimpleRenderingExample
 			FMemory::Memcpy(IndexBuffer.GetData(), Indices, NumIndices * sizeof(uint16));
 
 			// Create index buffer. Fill buffer with initial data upon creation
-			FRHIResourceCreateInfo CreateInfo(&IndexBuffer);
+			FRHIResourceCreateInfo CreateInfo(TEXT("SimpleRenderingExample"), &IndexBuffer);
 			IndexBufferRHI = RHICreateIndexBuffer(sizeof(uint16), IndexBuffer.GetResourceDataSize(), BUF_Static, CreateInfo);
 		}
 	};

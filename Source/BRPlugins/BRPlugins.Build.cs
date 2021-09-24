@@ -36,7 +36,8 @@ public class BRPlugins : ModuleRules
                 "SlateCore",
 				"UMG",
                 "MaterialShaderQualitySettings",
-                "AnimationBlueprintLibrary"
+                "AnimationBlueprintLibrary",
+                "InputCore"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);

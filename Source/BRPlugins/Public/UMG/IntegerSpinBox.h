@@ -16,7 +16,7 @@
  * A numerical entry box that allows for direct entry of the number or allows the user to click and slide the number.
  */
 UCLASS()
-class RPGGAMEPLAYABILITY_API UIntegerSpinBox : public UWidget
+class BRPLUGINS_API UIntegerSpinBox : public UWidget
 {
 	GENERATED_UCLASS_BODY()
 

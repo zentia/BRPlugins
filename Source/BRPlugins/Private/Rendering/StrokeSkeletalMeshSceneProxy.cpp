@@ -1,7 +1,7 @@
 ﻿#include "Rendering/StrokeSkeletalMeshSceneProxy.h"
 #include "Engine/Public/SkeletalMeshTypes.h"
-#include "Engine/Public/TessellationRendering.h"
 #include "Engine/Public/SkeletalRenderPublic.h"
+#include "Rendering/StrokeSkeletalMeshComponent.h"
 #define LOCTEXT_NAMESPACE "StrokeSkeletalMeshSceneProxy"
 
 FStrokeSkeletalMeshSceneProxy::FStrokeSkeletalMeshSceneProxy(const USkinnedMeshComponent* Component, FSkeletalMeshRenderData* InSkelMeshRenderData):

@@ -48,7 +48,7 @@ namespace SimpleRenderingExample
 		SHADER_PARAMETER_STRUCT_REF(FSimpleUniformStructParameters, SimpleUniformStruct)
 		SHADER_PARAMETER_TEXTURE(Texture2D, TextureVal)
 		SHADER_PARAMETER_SAMPLER(SamplerState, TextureSampler)
-		SHADER_PARAMETER(FVector4, SimpleColor)
+		SHADER_PARAMETER(FVector4f, SimpleColor)
 		RENDER_TARGET_BINDING_SLOTS()
 		END_SHADER_PARAMETER_STRUCT()
 

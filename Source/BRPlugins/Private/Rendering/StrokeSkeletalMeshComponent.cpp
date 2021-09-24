@@ -59,7 +59,7 @@ FPrimitiveSceneProxy* UStrokeSkeletalMeshComponent::CreateSceneProxy()
 	{
 		// Only create a scene proxy if the bone count being used is supported, or if we don't have a skeleton (this is the case with destructibles)
 		int32 MaxBonesPerChunk = SkelMeshRenderData->GetMaxBonesPerSection();
-		int32 MaxSupportedNumBones = MeshObject->IsCPUSkinned() ? MAX_int32 : GetFeatureLevelMaxNumberOfBones(SceneFeatureLevel);
+		int32 MaxSupportedNumBones = MeshObject->IsCPUSkinned() ? MAX_int32 : MAX_uint16;
 		if (MaxBonesPerChunk <= MaxSupportedNumBones)
 		{
 			Result = ::new FStrokeSkeletalMeshSceneProxy(this, SkelMeshRenderData);

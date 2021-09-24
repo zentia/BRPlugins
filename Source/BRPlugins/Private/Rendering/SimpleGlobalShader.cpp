@@ -131,7 +131,7 @@ namespace SimpleRenderingExample
 		
 		FIntPoint Size = InTexRenderTargetRHIture->GetSizeXY();
 
-		FRHIResourceCreateInfo CreateInfo;
+		FRHIResourceCreateInfo CreateInfo(TEXT("SimpleGlobalShader"));
 
 		FTexture2DRHIRef Texture = RHICreateTexture2D(Size.X, Size.Y, PF_A32B32G32R32F, 1, 1, TexCreate_ShaderResource | TexCreate_UAV, CreateInfo);
 		FUnorderedAccessViewRHIRef TextureUAV = RHICreateUnorderedAccessView(Texture);
@@ -151,7 +151,7 @@ namespace SimpleRenderingExample
 	#else  
 		SCOPED_DRAW_EVENT(RHIImmCmdList, GlobalShaderDraw);
 	#endif  
-		RHIImmCmdList.TransitionResource(ERHIAccess::EWritable, RenderTargetRHI);
+		RHIImmCmdList.TransitionResource(ERHIAccess::WritableMask, RenderTargetRHI);
 
 		FRHIRenderPassInfo RPInfo(RenderTargetRHI, ERenderTargetActions::DontLoad_Store, RenderTargetRHI);
 		RHIImmCmdList.BeginRenderPass(RPInfo, TEXT("SimplePixelShaderPass"));
